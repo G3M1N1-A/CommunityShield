@@ -1,35 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Display a marker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
     <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
     <style>
-        body{
-            margin: 0;
-            padding: 0;
-        }
-        map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-    }
-    
+      #map {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
     </style>
-  
-</head>
-<body>
-    <div id="map"></div>
-        <script> 
-          const key = 'yaP8hRNNqEcRUmiHl140';
-          const attribution = new ol.control.Attribution({
+  </head>
+  <body>
+    <div id="map">
+      <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+    </div>
+    <script>
+      const key = 'yaP8hRNNqEcRUmiHl140';
+
+      const attribution = new ol.control.Attribution({
         collapsible: false,
       });
 
       const source = new ol.source.TileJSON({
-        url: `https://api.maptiler.com/maps/openstreetmap/tiles.json?key=yaP8hRNNqEcRUmiHl140`,
+        url: `https://api.maptiler.com/maps/basic-v2/tiles.json?key=${key}`, // source URL
         tileSize: 512,
         crossOrigin: 'anonymous'
       });
@@ -44,13 +36,10 @@
         target: 'map',
         view: new ol.View({
           constrainResolution: true,
-          center: ol.proj.fromLonLat([16.62662018, 49.2125578]),
-          zoom: 14
+          center: ol.proj.fromLonLat([125.684120, 7.308707]), // starting position [lng, lat]
+          zoom: 10 // starting zoom
         })
       });
     </script>
-     
-    
-    
-</body>
+  </body>
 </html>
